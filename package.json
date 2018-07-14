@@ -1,0 +1,41 @@
+{
+  "name": "jquery-form-validation",
+  "title": "jQuery form validation",
+  "main": "dist/jquery.form-validation.js",
+  "description": "jQuery library to validate html forms. complitable with bootstrap v4 and bootstrap v3",
+  "version": "1.0",
+  "homepage": "https://bnabriss.github.io/jquery-form-validation/",
+  "author": {
+    "name": "Bassam Nabriss",
+    "url": "https://github.com/bnabriss"
+  },
+  "contributors": [
+    {
+      "name": "Bassam Nabriss",
+      "url": "https://github.com/bnabriss"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bnabriss/jquery-form-validation"
+  },
+  "bugs": {
+    "url": "https://github.com/bnabriss/jquery-form-validation/issues"
+  },
+  "files": [
+    "dist/*.js"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": ">=1.8"
+  },
+  "keywords": [
+    "jquery",
+    "form",
+    "validation",
+    "validator",
+    "bootstrap 4",
+    "bootstrap 3",
+    "input pattern"
+  ]
+}
