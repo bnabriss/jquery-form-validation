@@ -230,19 +230,19 @@ var Validator = function () {
     Validator.prototype.different = function (otherName) {
         this.otherName = otherName;
         this.triggerOtherName(otherName);
-        var otherValue = this.$form.serializeArrayKv()[otherName];
+        var otherValue = this.serializeArrayKv(this.$form)[otherName];
         return this.val !== otherValue;
     };
     Validator.prototype.required_if = function (otherName) {
         this.otherName = otherName;
         this.triggerOtherName(otherName);
-        var otherValue = this.$form.serializeArrayKv()[otherName];
+        var otherValue = this.serializeArrayKv(this.$form)[otherName];
         return otherValue ? this.required() : true;
     };
     Validator.prototype.required_if_val = function (otherName, specificValue) {
         this.otherName = otherName;
         this.triggerOtherName(otherName);
-        var otherValue = this.$form.serializeArrayKv()[otherName];
+        var otherValue = this.serializeArrayKv(this.$form)[otherName];
         if (this.valLength(specificValue) && otherValue === specificValue) {
             // checked value === other value
             return this.required();
@@ -322,7 +322,12 @@ var Validator = function () {
         });
         return message;
     };
-
+    Validator.prototype.serializeArrayKv = function ($form) {
+        var arr = $form.serializeArray(), obj = {};
+        for (var i = 0; i < arr.length; ++i)
+            obj[arr[i].name] = arr[i].value;
+        return obj;
+    };
     Validator.prototype.language = {
         numeric: 'The {label} must be a number.',
         integer: 'The {label} must be an integer.',
@@ -344,7 +349,7 @@ var Validator = function () {
         in: 'The selected {label} is invalid.',
         not_in: 'The selected {label} is invalid.',
         different: 'The {label} and {otherLabel} must be different.',
-        required: 'The {label} field is required..',
+        required: 'The {label} field is required.',
         required_if: 'The {label} field is required when {otherLabel} is filled.',
         required_if_val: 'The {label} field is required when {otherLabel} is {param0}',
         same: 'The {label} and {otherLabel} must match.',
