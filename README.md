@@ -14,7 +14,7 @@ https://raw.githubusercontent.com/bnabriss/jquery-form-validation/master/dist/jq
 ### How to use
 
 #### Simple usage
-
+![image](http://bntracking.com/15Cb5IPsKL.gif)
 ###### html
 ```html
 <form>
