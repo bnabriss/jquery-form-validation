@@ -1,0 +1,51 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="../dist/jquery.form-validation.min.js"></script>
+
+</head>
+<body>
+<br>
+<br>
+    <form class=col-xs-8>
+		<div class="form-group has-success has-feedback">
+			<label class="control-label" for="inputGroupSuccess3">Input group with success</label>
+			<div class="input-group">
+			  <span class="input-group-addon">@</span>
+			  <input class="form-control" name="fname" data-validator-label="First Name" data-validator="required|min:4|max:10">
+			</div>
+		
+		
+		</div>
+
+        
+        <div class="form-group">
+            <label >Last name</label>
+            <input class="form-control" name="lname" data-validator-label="Last Name" data-validator="required|min:4|max:10|different:fname">
+            <div class="form-control-feedback"></div>
+        </div>
+    </form>
+
+	<style>
+		.form-control-feedback {
+    position: static;
+     width: auto; 
+    /* height: 34px; */
+    text-align: left;
+}
+	</style>
+
+<script>
+    
+    $(document).on('blur', '[data-validator]', function () {
+        new Validator($(this));
+    });</script>
+</body>
+</html>

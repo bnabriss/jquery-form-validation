@@ -1,7 +1,8 @@
 # jQuery form validation
-jQuery form validation is a library that helps you to validate your html form, it's completable with booth bootstrap 3 and bootstrap 4.
+jQuery form validation is a library that helps you to validate your HTML form, it's completable with both Bootstrap 3 and Bootstrap 4.
 
 ### Installation 
+You can follow one of these methods to get the package:
 ##### via npm
 ``` 
 npm install jquery-form-validation
@@ -9,6 +10,10 @@ npm install jquery-form-validation
 ##### direct download
 ```
 https://raw.githubusercontent.com/bnabriss/jquery-form-validation/master/dist/jquery.form-validation.min.js
+```
+##### from JSDELIVR
+```html
+<script src="https://cdn.jsdelivr.net/npm/jquery-form-validation/dist/jquery.form-validation.min.js"></script>
 ```
 
 ### How to use
@@ -30,8 +35,8 @@ $(document).on('blur', '[data-validator]', function () {
 });
 ```
 
-#### add feedback message
-update your html to add element with selector `.form-control-feedback` belongs to the parent `.form-group` , you also should set the input label to bind it to the error message by adding the attribute `data-validator-label`.
+#### Add feedback message
+Update your HTML to add element with selector `.form-control-feedback`, this element should belong to the parent `.form-group` (or your parent selector), you should also set the input label, this label will be visble in the error message, by adding the attribute `data-validator-label` to input itself.
 ```html
 <form>
     <div class="form-group">
@@ -42,13 +47,13 @@ update your html to add element with selector `.form-control-feedback` belongs t
 ```
 
 #### Customize options
-You can pass your custom options as a second parameter to constructor.
+You can pass your custom options as a second parameter to the constructor.
 ```javascript
 $(document).on('blur', '[data-validator]', function () {
     new Validator($(this), {/* your options here*/});
 });
 ```
-and here is a table of available options
+And here is a table of available options
 
 | Tables        | default  |description  |
 | ------------- | :------:|------|
@@ -66,7 +71,7 @@ and here is a table of available options
 
 
 #### warning errors
-you can specify some rules as warning errors, this completable with bootstrap 3 (or your custom options) since it has `has-warnig` class for the parent `.form-group` 
+you can specify some rules as warning errors, this completable with bootstrap 3 (or your custom options) since it has `has-warning` class for the parent `.form-group` 
 ```html
 <form>
     <div class="form-group">
@@ -74,6 +79,7 @@ you can specify some rules as warning errors, this completable with bootstrap 3 
     </div>
 </form>
 ```
+> Note that you should keep min in `data-validator`.
 
 ### Available Validation Rules
 
@@ -106,7 +112,7 @@ you can specify some rules as warning errors, this completable with bootstrap 3 
 | url | `url` | The field under validation must be a valid URL |
 
 #### Custom errors 
-you can bind the `Validator` object with your custom check function.
+You can bind the `Validator` object with your custom validator function.
 ```javascript
 Validator.prototype.valid_user_name = function (customLength) {
     if (this.val && customLength /*...*/){
@@ -116,7 +122,7 @@ Validator.prototype.valid_user_name = function (customLength) {
     return false;
 };
 ```
-and to use it in your forms 
+And to use it in your forms 
 ```html
 <form>
     <div class="form-group">
@@ -158,11 +164,11 @@ Validator.prototype.language = {
 }
 ```
 #### Bind error message 
-you can simply override the given messages using prototype object, and note that the key of the message is exactly the same of the function name, so when you add your custom validator you should add the  suitable key language if you want to show the error
+you can simply override the given messages using prototype object, and note that the key of the message is exactly the same of the function name, so when you add your custom validator you should add the suitable key language if you want to show the error, you can also use the syntax `'{label}'` in your message to be replaced with your `[data-validator-label]` that you have added to the input, you can also the syntax `{param0}` to bind the first parameter in the error your message.
 ```javascript
 Validator.prototype.language = {/* your custom error messages */}
 ```
-or you can merge exiting errors with additional messages using options parameter in the constructor 
+Or you can merge exiting errors with additional messages using options parameter in the constructor 
 ```javascript
 $(document).on('blur', '[data-validator]', function () {
     new Validator($(this), {
